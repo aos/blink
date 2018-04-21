@@ -1,8 +1,9 @@
+import os
 import indicoio
 import pandas as pd
 import matplotlib.pyplot as plt
 
-indicoio.config.api_key = 'db4febba00641426049aefe849e6c4ea'
+indicoio.config.api_key = os.environ.get('API_KEY')
 
 # Batch request facial emotional recognition
 res = indicoio.fer([
