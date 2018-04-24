@@ -1,5 +1,4 @@
 import numpy as np
-import os
 import cv2
 
 import time
@@ -10,12 +9,19 @@ import indicoio
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# import xml file 
-face_cascade = cv2.CascadeClassifier('./opencv-3.4.1/data/haarcascades_cuda/haarcascade_frontalface_default.xml')
-eye_cascade = cv2.CascadeClassifier('./opencv-3.4.1/data/haarcascades_cuda/haarcascade_eye.xml')
+from dotenv import load_dotenv, find_dotenv
+import os
+
+load_dotenv(find_dotenv())
 
 # Indico API key
-indicoio.config.api_key = os.environ.get('API_KEY')
+indicoio.config.api_key = os.getenv('API_KEY')
+
+# import xml file 
+face_cascade = cv2.CascadeClassifier('./resources/haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('./resources/haarcascade_eye.xml')
+
+# indicoio.config.api_key = os.environ.get('API_KEY')
 
 cap = cv2.VideoCapture(0)
 cv2.namedWindow("WD")
@@ -46,7 +52,7 @@ while(True):
 		res.append(out)
 		
 		# logging
-		logging.basicConfig(level=logging.DEBUG, filename="logfile", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
+		logging.basicConfig(level=logging.DEBUG, filename="logfile.log", filemode="a+", format="%(asctime)-15s %(levelname)-8s %(message)s")
 		logging.info(out)
 
 		
