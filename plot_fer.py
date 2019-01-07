@@ -16,7 +16,7 @@ res = indicoio.fer([
 ])
 
 # Pull each emotion separately
-#angry, sad, neutral, surprise, fear, happy = [res[k] for k in ('Angry',
+# angry, sad, neutral, surprise, fear, happy = [res[k] for k in ('Angry',
 #                          'Sad',
 #                          'Neutral',
 #                          'Surprise',
